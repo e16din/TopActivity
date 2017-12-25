@@ -8,7 +8,8 @@ import java.lang.ref.WeakReference
 
 object TopActivity {
 
-    private var activityRef: WeakReference<Activity>? = null
+    private var applicationRef: WeakReference<out Application>? = null
+    private var activityRef: WeakReference<out Activity>? = null
 
     @JvmStatic
     fun set(activity: Activity?) {
@@ -19,7 +20,11 @@ object TopActivity {
     fun get(): Activity? = if (activityRef == null) null else activityRef!!.get()
 
     @JvmStatic
+    fun getApplication(): Application? = if (applicationRef == null) null else applicationRef!!.get()
+
+    @JvmStatic
     fun init(app: Application) {
+        applicationRef = WeakReference(app)
         app.initTopActivity()
     }
 }
@@ -30,3 +35,4 @@ fun Application.initTopActivity() {
 
 fun activity() = TopActivity.get()
 fun context(): Context? = activity()
+fun app(): Application? = TopActivity.getApplication()
