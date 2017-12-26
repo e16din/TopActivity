@@ -5,8 +5,10 @@ Memory leaks protected.
 
 [![Release](https://jitpack.io/v/e16din/TopActivity.svg)](https://jitpack.io/#e16din/TopActivity)
 
-## Usage
+## Usage Kotlin
 ```kotlin
+// Kotlin
+
 activity()
 
 context()
@@ -14,6 +16,8 @@ app()
 ```
 
 ```java
+// Java
+
 Activity activity = TopActivity.get();
 ```
 
