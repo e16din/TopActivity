@@ -10,7 +10,7 @@ class App : Application() {
         super.onCreate()
 
         initTopActivity { activity ->
-            val message = if (activity != null) "activity: " + activity.javaClass.simpleName else "exit!"
+            val message = if (activity != null) "activity: ${activity.javaClass.simpleName}" else "exit!"
             Log.d("debug", message)
         }
     }

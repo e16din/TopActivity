@@ -5,11 +5,12 @@ import android.app.Application
 import android.content.Context
 import java.lang.ref.WeakReference
 
+typealias OnNextTopActivityListener = ((Activity?) -> Unit)
 
 object TopActivity {
 
     internal var applicationRef: WeakReference<out Application>? = null
-    internal var onNextTopActivityListener: WeakReference<((Activity?) -> Unit)>? = null
+    internal var onNextTopActivityListener: WeakReference<OnNextTopActivityListener>? = null
     private var activityRef: WeakReference<out Activity>? = null
 
     @JvmStatic
@@ -26,13 +27,13 @@ object TopActivity {
     fun getApplication(): Application? = if (applicationRef == null) null else applicationRef!!.get()
 
     @JvmStatic
-    fun init(app: Application, onNextTopActivityListener: ((Activity?) -> Unit)? = null) {
+    fun init(app: Application, onNextTopActivityListener: OnNextTopActivityListener? = null) {
         app.initTopActivity(onNextTopActivityListener)
     }
 
 }
 
-fun Application.initTopActivity(onNextTopActivityListener: ((Activity?) -> Unit)? = null) {
+fun Application.initTopActivity(onNextTopActivityListener: OnNextTopActivityListener? = null) {
     TopActivity.applicationRef = WeakReference(this)
     TopActivity.onNextTopActivityListener =
             if (onNextTopActivityListener == null) null
