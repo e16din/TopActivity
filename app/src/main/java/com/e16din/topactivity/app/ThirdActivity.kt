@@ -1,4 +1,4 @@
-package com.e16din.topactivity
+package com.e16din.topactivity.app
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity

@@ -1,8 +1,9 @@
-package com.e16din.topactivity
+package com.e16din.topactivity.app
 
 
 import android.app.Application
 import android.util.Log
+import com.e16din.topactivity.initTopActivity
 
 class App : Application() {
 
