@@ -1,23 +1,20 @@
 # TopActivity
-Don't worry about context changed, just call a method activity() anywhere in your project, and you will retrieve actual activity.
+Don't worry about context changed, just call a method activity() anywhere in your project, and you will retrieve actual top activity.
 
 Memory leaks protected.
 
 [![Release](https://jitpack.io/v/e16din/TopActivity.svg)](https://jitpack.io/#e16din/TopActivity)
 
-## Usage Kotlin
+## Usage
 ```kotlin
 // Kotlin
-
 activity()
-
 context()
 app()
 ```
 
 ```java
 // Java
-
 Activity activity = TopActivity.get();
 ```
 
