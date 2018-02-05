@@ -30,7 +30,6 @@ object TopActivity {
     fun init(app: Application, onNextTopActivityListener: OnNextTopActivityListener? = null) {
         app.initTopActivity(onNextTopActivityListener)
     }
-
 }
 
 fun Application.initTopActivity(onNextTopActivityListener: OnNextTopActivityListener? = null) {
