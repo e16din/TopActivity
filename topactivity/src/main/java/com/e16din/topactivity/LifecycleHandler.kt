@@ -6,7 +6,9 @@ import android.os.Bundle
 
 class LifecycleHandler : Application.ActivityLifecycleCallbacks {
 
-    override fun onActivityCreated(activity: Activity?, savedInstanceState: Bundle?) {}
+    override fun onActivityCreated(activity: Activity?, savedInstanceState: Bundle?) {
+        setActivity(activity)
+    }
 
     override fun onActivityDestroyed(activity: Activity?) {}
 
@@ -17,12 +19,12 @@ class LifecycleHandler : Application.ActivityLifecycleCallbacks {
     override fun onActivitySaveInstanceState(activity: Activity?, outState: Bundle?) {}
 
     override fun onActivityStarted(activity: Activity?) {
-        setActivity(activity)
+        if (topActivity != activity) {
+            setActivity(activity)
+        }
     }
 
     override fun onActivityStopped(activity: Activity?) {
-        val topActivity = TopActivity.get()
-
         if (topActivity != null && topActivity == activity) {
             TopActivity.set(null)
         }

@@ -1,5 +1,5 @@
 # TopActivity
-Don't worry about context changed, just call a method activity() anywhere in your project, and you will retrieve actual top activity.
+Don't worry about context changed, just call a method TopActivity.get() anywhere in your project to retrieve current activity.
 
 Memory leaks protected.
 
@@ -8,14 +8,14 @@ Memory leaks protected.
 ## Usage
 ```kotlin
 // Kotlin
-activity()
-context()
-app()
+val activity = topActivity
+val application = app
 ```
 
 ```java
 // Java
 Activity activity = TopActivity.get();
+Application application = TopActivity.getApplication();
 ```
 
 
@@ -25,10 +25,7 @@ class App : Application() {
     override fun onCreate() {
         super.onCreate()
 
-        initTopActivity { activity ->
-            val message = if (activity != null) "activity: ${activity.javaClass.simpleName}" else "exit!"
-            Log.d("debug", message)
-        }
+        initTopActivity()
     }
 }
 ```
@@ -46,6 +43,6 @@ Step 1. Add it in your root build.gradle at the end of repositories:
 Step 2. Add the dependency
 ```groovy
     dependencies {
-        compile 'com.github.e16din:TopActivity:1.0.4'
+        implementation 'com.github.e16din:TopActivity:1.0.5'
     }
 ```

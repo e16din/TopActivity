@@ -2,7 +2,6 @@ package com.e16din.topactivity
 
 import android.app.Activity
 import android.app.Application
-import android.content.Context
 import java.lang.ref.WeakReference
 
 typealias OnNextTopActivityListener = ((Activity?) -> Unit)
@@ -40,7 +39,8 @@ fun Application.initTopActivity(onNextTopActivityListener: OnNextTopActivityList
     registerActivityLifecycleCallbacks(LifecycleHandler())
 }
 
+val topActivity
+    get() = TopActivity.get()
 
-fun activity() = TopActivity.get()
-fun context(): Context? = activity()
-fun app(): Application? = TopActivity.getApplication()
+val app
+    get() = TopActivity.getApplication()
